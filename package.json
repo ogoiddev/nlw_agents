@@ -1,0 +1,33 @@
+{
+  "name": "nlw_agents",
+  "version": "1.0.0",
+  "description": "NLW Agents",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx --env-file .env --watch src/server.ts",
+    "start": "node --env-file .env dist/server.js",
+    "db:seed": "tsx --env-file .env src/db/seed.ts",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "@types/node": "^24.0.10",
+    "dotenv": "^17.1.0",
+    "drizzle-orm": "^0.44.2",
+    "drizzle-seed": "^0.3.1",
+    "fastify": "^5.4.0",
+    "fastify-type-provider-zod": "^5.0.1",
+    "postgres": "^3.4.7",
+    "typescript": "^5.8.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.0.6",
+    "drizzle-kit": "^0.31.4",
+    "tsx": "^4.19.2",
+    "ultracite": "5.0.32"
+  }
+}
