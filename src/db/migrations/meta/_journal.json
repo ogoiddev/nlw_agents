@@ -8,6 +8,13 @@
       "when": 1751985003786,
       "tag": "0000_remarkable_luckman",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1752026884117,
+      "tag": "0001_first_devos",
+      "breakpoints": true
     }
   ]
 }

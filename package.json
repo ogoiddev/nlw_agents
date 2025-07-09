@@ -9,6 +9,7 @@
     "dev": "tsx --env-file .env --watch src/server.ts",
     "start": "node --env-file .env dist/server.js",
     "db:seed": "tsx --env-file .env src/db/seed.ts",
+    "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio"
   },
