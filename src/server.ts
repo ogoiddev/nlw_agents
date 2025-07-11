@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { fastifyCors } from "@fastify/cors";
 import { fastifyMultipart } from "@fastify/multipart";
 import { fastify } from "fastify";
