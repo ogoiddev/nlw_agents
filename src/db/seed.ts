@@ -8,24 +8,24 @@ await reset(db, schema);
 console.log("Iniciando seed com drizzle-seed...");
 
 // Seed usando a sintaxe oficial do drizzle-seed
-await seed(db, schema).refine((funcs) => ({
-  rooms: {
-    count: 20,
-    columns: {
-      // Não precisamos especificar id pois tem defaultRandom()
-      // Não precisamos especificar createdAt/updatedAt pois tem defaultNow()
-      name: funcs.companyName(),
-      description: funcs.loremIpsum(),
-    },
-    questions: {
-      count: 5,
-      columns: {
-        question: funcs.loremIpsum(),
-        answer: funcs.loremIpsum(),
-      },
-    },
-  },
-}));
+// await seed(db, schema).refine((funcs) => ({
+//   rooms: {
+//     count: 20,
+//     columns: {
+//       // Não precisamos especificar id pois tem defaultRandom()
+//       // Não precisamos especificar createdAt/updatedAt pois tem defaultNow()
+//       name: funcs.companyName(),
+//       description: funcs.loremIpsum(),
+//     },
+//     questions: {
+//       count: 5,
+//       columns: {
+//         question: funcs.loremIpsum(),
+//         answer: funcs.loremIpsum(),
+//       },
+//     },
+//   },
+// }));
 
 // biome-ignore lint/suspicious/noConsole: debug seed progress
 console.log("Seed com drizzle-seed completado!");
