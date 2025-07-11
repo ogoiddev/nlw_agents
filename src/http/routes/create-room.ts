@@ -1,5 +1,5 @@
 import type { FastifyPluginCallbackZod } from "fastify-type-provider-zod";
-import z from "zod/v4";
+import { z } from "zod/v4";
 import { db } from "../../db/connection.ts";
 import { schema } from "../../db/schema/index.ts";
 
@@ -9,7 +9,7 @@ export const createRoomRoute: FastifyPluginCallbackZod = (app) => {
     {
       schema: {
         body: z.object({
-          name: z.string(),
+          name: z.string().min(1),
           description: z.string().optional(),
         }),
       },
@@ -17,20 +17,21 @@ export const createRoomRoute: FastifyPluginCallbackZod = (app) => {
     async (request, reply) => {
       const { name, description } = request.body;
 
-      const room = await db
+      const result = await db
         .insert(schema.rooms)
-        .values({ name, description })
+        .values({
+          name,
+          description,
+        })
         .returning();
 
-      const roomId = room[0];
+      const insertedRoom = result[0];
 
-      if (!roomId) {
-        throw new Error("Failed to create room");
+      if (!insertedRoom) {
+        throw new Error("Failed to create new room.");
       }
 
-      return reply.status(201).send({
-        roomId: roomId.id,
-      });
+      return reply.status(201).send({ roomId: insertedRoom.id });
     }
   );
 };
